@@ -1,31 +1,63 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  <a-button type="primary">Primary</a-button>
-  <a-button>Default</a-button>
-  <a-button type="dashed">Dashed</a-button>
-  <a-button type="danger">Danger</a-button>
-  <a-config-provider :auto-insert-space-in-button="false">
-    <a-button type="primary">按钮</a-button>
+  <a-config-provider :locale="locale">
+    <router-view />
   </a-config-provider>
-  <a-button type="primary">按钮</a-button>
-  <a-button type="link">Link</a-button>
 </template>
 
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
+import zhCN from "ant-design-vue/es/locale/zh_CN";
+import enGB from "ant-design-vue/es/locale/en_GB";
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  components: {},
+  setup() {
+    return {
+      locale: zhCN,
+    };
+  },
+});
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+} */
+
+html,
+body {
+  overflow: hidden;
+}
+/* 滚动条样式 */
+
+.scroller {
+  overflow-y: scroll;
+  /* scrollbar-color: rebeccapurple green; */
+  scrollbar-width: thin;
+}
+
+.scroller::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 3px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  /* border-radius: 10px; */
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #535353;
+}
+
+.scroller::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #ededed;
 }
 </style>
